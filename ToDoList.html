@@ -1,0 +1,255 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Todo-List</title>
+ 
+</head>
+ 
+<style>
+ 
+ 
+body {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: #F5F5F5;
+   
+}
+ 
+@media(min-width:700px){
+    .todo-wrapper(
+        justify-content: center;
+        width:700px;
+        height:550px;
+        margin-top: 0rem;
+ 
+    )
+}
+ 
+.todo-title {
+    padding: 0.5rem;
+    text-align: center;
+    color: #649BD9;
+    font-size: 2rem;
+}
+ 
+.todo-box {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+ 
+.todo-input-box {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 3rem;
+    border-bottom: 1px solid #ddd;
+    justify-content: flex-start;
+    align-items: center;
+   
+}
+.todo-list{
+    padding:0rem;
+    margin:0.1rem;
+}
+button {
+    background-color: transparent;
+    border: 0;
+}
+ 
+.complete-all-btn {
+    color: #649BD9;
+    min-width: none;
+    min-height: none;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.5rem;
+   
+}
+ 
+.complete-all-btn.checked {
+    color:#649BD9;
+}
+ 
+.todo-input {
+    width: 80%;
+    text-align: left;
+    border: 0;
+    outline: none;
+    font-size: 0.9rem;
+}
+input::placeholder{
+    color:#84B0E1;
+}
+ 
+.todo-item {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    border-bottom: 1px solid #ddd;
+}
+ 
+.todo-item:hover .delBtn {
+    opacity: 1;
+}
+ 
+.checkbox {
+    min-width: none;
+    min-height: none;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0.5rem 0.5rem;
+    border-radius: 50px;
+    border: 2px solid darkgray;
+    cursor: pointer;
+    text-align: center;
+}
+ 
+.todo-item.checked .checkbox{
+    border: 2px solid lightgray;
+    font-size: 1rem;
+    color: #649BD9;
+}
+ 
+.todo {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+    width: 80%;
+}
+ 
+.todo-item.checked .todo{
+ font-style: italic;
+ text-decoration: line-through;
+ color: rgb(124, 119, 119);
+}
+ 
+.delBtn {
+    opacity: 1;
+    width: 1rem;
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: lighter;
+    cursor: pointer;
+    padding:0;
+}
+.sideButton{
+    opacity: 1;
+    width: 1.2rem;
+    height: 2.5rem;
+    font-size: 0.8rem;
+    font-weight: lighter;
+    color: #649BD9;
+    padding-top: 0rem;
+}
+ 
+ 
+.todo-bottom {
+    height: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    padding-bottom:1rem;
+}
+ 
+.button-group{
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+ 
+.button-group button {
+    border: 1px solid #eee;
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+ 
+.button-group button.selected {
+    border: 2px solid #649BD9;
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+}
+ 
+.clear-completed-btn:hover {
+    font-style: italic;
+    text-decoration: underline;
+    cursor: pointer;
+}
+ 
+.edit-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 590px;
+    height: 2.8rem;
+    margin: 0;
+}
+ 
+p.info {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+</style>
+<body>
+   
+    <div id = "objId" class="todo-wrapper">
+        <div class="todo-title">To Do</div>
+        <div class="todo-box">
+ 
+            <div class="todo-input-box">
+                <button class="complete-all-btn">✔</button>
+                <input type="text" class="todo-input" placeholder="Enter what you need to do">
+ 
+            </div>
+           
+            <ul class="todo-list">
+             <!-- <li class="todo-item checked">
+                    <div class="checkbox">✔</div>
+                    <div class="todo">첫번째 할 일</div>
+                    <button class="delBtn">x</button>
+                </li>
+                <li class="todo-item">
+                    <div class="checkbox"></div>
+                    <div class="todo">두번째 할 일</div>
+                    <button class="delBtn">x</button>
+                </li> -->
+            </ul>
+            <div class="todo-bottom">
+                <div class="left-items" style="font-size: 0.8rem; color:#7c7777;">left</div>
+                <div class="button-group">
+                    <button class="show-all-btn selected" data-type="all">All</button>
+                    <button class="show-active-btn" data-type="active">Active</button>
+                    <button class="show-completed-btn" data-type="completed">Completed</button>
+                </div>
+                <button class="clear-completed-btn">Clear Completed</button>
+            </div>
+        </div>
+        <p class='info'>더블클릭 시 수정 가능!</p>
+       
+    </div>
+     <script src="Todo_List_Layout.js" ></script>
+     <script type="text/javascript"></script>
+     
+     
+</body>
+ 
+</html>
+ 
