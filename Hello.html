@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HEllo</title>
+</head>
+
+<style>
+    div{
+        text-align: left;
+        font-family: system-ui;
+        padding: 20px;
+        width:200px
+        height: auto;
+     }
+     #button{
+        height: 35px;
+        width: auto;
+        background-color:#B2E0DF;
+        color:white;
+        font-size: 15px;
+        border: 3px solid #dbb2e0;
+        border-radius: 20px;
+     }
+     #button:hover{
+        color:#dbb2e0;
+     }
+     .contents{
+        margin: 10px;
+        font-size: 28px;
+        color:#dbb2e0;
+        
+     }
+     
+</style>
+<body>
+    <div>
+        <input type = "button" id="button" class = "btn" value= "What's your name?" />
+        <p class = "contents">안녕하세요.</p>       
+    </div>
+    <script type="text/javascript">
+        const button = document.getElementById("button");
+        const contents = document.querySelector(".contents");
+        
+        button.addEventListener("click",changeText);
+    
+        function changeText(){
+            const name = prompt('Enter your name');
+            contents.textContent += name +'님 반갑습니다.😊';
+        }
+    
+    </script>
+</body>
+</html>
