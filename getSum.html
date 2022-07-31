@@ -1,4 +1,4 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,9 @@
        $('#RESULT').val(total);
 
     }
+    $("#NUM1").keyup(GetSum);
+    $("#NUM2").keyup(GetSum);
+
 </script>
 <body>
 <table>
@@ -26,8 +29,8 @@
         <th scope="col">결과</th>
     </tr>
     <tr>
-        <td><input type="text" id = "NUM1" NAME= "NUM1" value="0" onkeyup= "GetSum()"; /></td>
-        <td><input type="text" id = "NUM2" NAME= "NUM2" value="0" onkeyup= "GetSum()"; /></td>
+        <td><input type="text" id = "NUM1" NAME= "NUM1" value="0" ; /></td>
+        <td><input type="text" id = "NUM2" NAME= "NUM2" value="0"; /></td>
         <td><input type="text" id = "RESULT" NAME = "RESULT" value="0"></td>
     </tr>   
     
