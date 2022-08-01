@@ -1,0 +1,82 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>TEAMWORKS</title>
+    <!-- // jquery // -->
+    <script type="text/javascript" src="/LIB/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/LIB/jquery/jquery-cookie.js"></script>
+    <!-- // DhtmlX // -->
+    <link rel="stylesheet" type="text/css" href="/LIB/Dhtmlx/dhtmlx.css" />
+    <script type="text/javascript" src="/LIB/Dhtmlx/dhtmlx.js"></script>
+    <!-- //  Common // -->
+    <link rel="stylesheet" type="text/css" href="/LIB/Base.css" />
+    <script type="text/javascript" src="/LIB/Base.js"></script>
+    <script type="text/javascript" src="/LIB/Dhx.js"></script>
+    <!-- //  Custom // -->
+    <!--<script type="text/javascript" src="/LIB/Dhx-Admin.js"></script>-->
+    <!--<script type="text/javascript" src="/LIB/jq-Admin.js"></script>-->
+    <script type="text/javascript" src="/MODULE/ES/LIB/Base-ES.js"></script>
+    <script type="text/javascript" src="/MODULE/BPS/LIB/Dhx.js"></script>
+    <script type="text/javascript" src="/MODULE/BPS/LIB/Jq.js"></script>
+
+    <script type="text/javascript">
+	<!--
+		$(document).ready(function () {
+		/* Url Parameter Split ****************************/
+			var nParam	= $(location).attr('search');
+			var nDhx		= nParam.split('&dhxr');
+			var nStt			= nDhx[0].replace('?', '').split("/");
+		/************************************************/
+			var nID = nStt[0];
+
+			BaseSetBodyAppend('List');
+			BaseSetGridResize(10, 90);
+			//$("#PAGE_SIZE").val(10);
+		    /* DhtmlX Object Bounding ***********************/
+
+            DhxToolbarTodoListSet();
+			DhxGridTodoListSet();
+		/************************************************/
+
+		});
+
+		$(window).resize( function(){
+            BaseSetGridResize(10, 90);
+			dhxGrid.setSizes();
+		});
+
+		$(window).unload( function (){
+		/* DhtmlX Object Memory Clear ******************/
+			//dhxGrid.destructor();
+			//dhxToolbar2.unload();
+			//dhxToolbar2 = null;
+			//dhxToolbar3.unload();
+			//dhxToolbar3 = null;
+		/************************************************/
+		});
+
+
+	//-->
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="container">
+            <div id="" style="padding:4px 0px 4px 0;">
+                <div id="objToolbar"><!-- DhtmlX Toolbar Object (Top) --></div>
+            </div>
+            <div id="objGrid"><!-- DhtmlX Grid Object --></div>
+            <div id="" style="padding:4px 0px 4px 0;">
+                <div id="objPaging"><!-- DhtmlX Toolbar Object (Pagging) --></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

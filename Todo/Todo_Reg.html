@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>HYD-TEAMWORKS</title>
+
+    <script type='text/javascript' src='/BPS/LIB/jquery-3.3.1.min.js'></script>
+    <script type="text/javascript" src="/BPS/LIB/jquery-Call.js?Sys"></script>
+     <!-- // DhtmlX // -->
+    <link rel="stylesheet" type="text/css" href="/LIB/Dhtmlx/dhtmlx.css" />
+    <script type="text/javascript" src="/LIB/Dhtmlx/dhtmlx.js"></script>
+    <link rel="stylesheet" type="text/css" href="/LIB/Dhtmlx/dhtmlxcalendar_dhx_skyblue.css"/>
+    <!-- //  Common // -->
+    <link rel="stylesheet" type="text/css" href="/LIB/Base.css" />
+    <script type="text/javascript" src="/LIB/Base.js"></script>
+    <script type="text/javascript" src="/LIB/Dhx.js"></script>
+    <script type="text/javascript">
+	<!--
+        $(document).ready(function () {
+            /* Url Parameter Split ****************************/
+            var nParam = $(location).attr('search');
+            var nDhx = nParam.split('&dhxr');
+            var nStt = nDhx[0].replace('?', '').split("/");
+            /************************************************/
+            var nID = nStt[0];
+          //  var nSeqNo = nStt[1];
+
+            $('.input01').focus(function () { $(this).removeClass("input01"); $(this).addClass("input01_over"); $(this).select(); })
+                .blur(function () { $(this).removeClass("input01_over"); $(this).addClass("input01"); });
+           
+            if(nID == "Reg"){
+                DhxForTodoReg();
+            }
+            else if (nID = "Mod"){
+                var nSeq_No = nStt[1];
+                
+                DhxForTodoMod(nSeq_No);
+                Jq_AjaxTodoModGetView(nSeq_No);
+
+            }                  
+
+            $("input[type=text]").keyup(function () {
+			    var re = /[|%*^\&\;\'\"\\\<>]/gi;
+			    var temp = $(this).val();
+			    if (re.test(temp)) {
+			        $(this).val(temp.replace(re, ""));
+			    }
+			});
+        });
+        
+
+        //-->
+    </script>
+</head>
+
+<body>
+    <div id="_Default" style="overflow: auto; width:100%; height:100%;">
+        <form id="Frm" name="Frm">
+            <div id="" style="padding:4px 0px 4px 0;">
+                <div id="objToolbar"><!-- DhtmlX Toolbar Object (Top) --></div>
+            </div>
+            <!-- collapse / separate  -->
+            <div id="" style="padding:5px; padding-top:20px;">
+                <table class="table_01" width="100%" align="center" cellpadding="0" cellspacing="0" border="1" style="margin-left: auto; margin-right: auto;">
+                    <caption style="display:none;">
+                        <div id="">Default</div>
+                    </caption>
+                    <tbody>
+                        <tr>
+                            <th scope="col" style="text-align:center;">할 일</th>
+                            <td colspan="3"><input type="text" id="CONTENTS" name="CONTENTS" class="input01" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    <div id="objToolbarSubmit" style="position: fixed; bottom: 10px; right:8px; width:100%; height:25px; padding:10px 0px 0 0; "></div>
+
+</body>
+
+</html>
+
+
