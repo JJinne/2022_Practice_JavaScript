@@ -13,7 +13,7 @@
     border : none;	
     overflow: auto;
   }
-.calendar {width: 1000px;height: 700px; padding: 30px 0px 0px 50px; box-sizing: border-box; }
+.calendar {width: 1200px;height: 900px; padding: 30px 0px 0px 50px; box-sizing: border-box; }
 .calendar > .header {text-align: center;font-size: 20px;margin: 15px;}
 .calendar > .header > .title {width:50%; display: inline-block;}
 .calendar > .header > .calendar_btn {
@@ -36,34 +36,18 @@
 .calendar > .dates > .date:nth-child(7n+1){color: red;}
 .calendar > .dates > .last {color: #c8c8c8 !important;}
 .calendar > .dates > .next {color: #c8c8c8 !important;}
-.calendar,#diary{
-  float: left;
-}
-.calendar,#todo{
-  float: left;
-}
-#todo{
-  width:30% ;
-  height: 40%;
-  margin: 0 ;
-  padding: 0;
-}
-#diary{
-  width :30%;
-	height:50%;
-  margin : 0 auto;
-  padding : 0;
-  background-color : none; 
-  float: right;
-  position : relative; 
 
+.calendar,#contents{
+  float: left;
 }
+
 </style>
 <body>
   <div class="calendar">
     <div class="header">
+        <div class="year"></div>
         <button class="calendar_btn">&lt;</button>
-        <div class = "title"> <span class="year"></span><span class="month"></span></div>
+        <div class = "title"> <span class="month"></span></div>
         <button class="calendar_btn">&gt;</button>
     </div>
     <div class="day">
@@ -77,15 +61,13 @@
     </div>
     <div class="dates"></div>
   </div>
-  <div id ="todo">안녕</div>
-  <div id="diary"></div>
+  <div class = "contents">
+        <h3 class = "memo"></h>
+
+  </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   
-  <script src="practice.js" defer></script>
   <script type="text/javascript">
-    
-    $(document).ready(function(){   
-       document.getElementById("diary").innerHTML='<object width = "100%"; height = "100%" type="text/html" data="220719_practice.html"></object>';})
 
       
     var CDate = new Date();  //today의 Date 를 세어주는 역할
@@ -125,7 +107,35 @@
         } 
     document.querySelector(".dates").innerHTML = htmlDates; 
     } 
-    
+ 
+    // function fn_click(n){
+    //     const memo = document.querySelector(".memo");
+    //     memo.textContent = '';
+    //     switch(n){
+    //         case 1:
+    //             memo.textContent = year.innerHTML +  ' 올해 목표'; 
+    //              break;
+    //         case 2:
+    //             memo.textContent = month.innerHTML + '일 하루 스케줄러';
+    //              break;
+    //         case 3:
+    //             memo.textContent = selectCk + '일 하루 스케줄러';
+    //             break;
+    //     }
+ 
+    // }
+    const memo = document.querySelector(".memo");
+    const year = document.querySelector('.year');
+    year.addEventListener('click', function fn_click(){
+        memo.textContent = year.innerHTML +  ' 올해 목표'; 
+        
+    });
+
+    const month = document.querySelector('.month');  
+    month.addEventListener('click', function fn_click(){
+        memo.textContent = month.innerHTML + ' 목표';
+    });
+ 
     const prevMonth= document.querySelectorAll('.calendar_btn')[0];
     prevMonth.addEventListener('click',prevCal);
     function prevCal(){
@@ -148,18 +158,18 @@
       if(CDate.getMonth + 1 < 10){
         month = "0" + (CDate.getMonth() + 1);
       }
-     
         $(".date").css("background-color", "");
         $(".date").css("color", "");
         $("#date_"+date).css("background-color", "#c6b2f544");
-        $("#date_"+date).css("color", "white");
+        $("#date_"+date).css("color", "");
         
         $("#period_1").val(year+"-"+month+"-"+date);
         $("#period_2").val("");
         selectCk = date;
-      
-      
+        memo.textContent = month+ '월 ' + selectCk + '일 하루 스케줄러';
+
     }
+
     
     buildcalendar();
     </script>
