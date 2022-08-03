@@ -1,0 +1,40 @@
+html,body{
+    width: 98%;
+    height: 100%;
+    margin : 0 auto;
+    padding : 25px;
+    border : none;	
+    overflow: auto;
+  }
+
+#calendar {width: auto; height:auto; box-sizing: border-box;display: inline-block; }
+.calendar > .header {text-align: center;font-size: 20px;}
+.calendar > .header > .title {width:50%; display: inline-block;}
+.calendar > .header > .calendar_btn {
+	width: 30px;
+	height: 30px;
+	border: none;
+	padding: 0;
+	background-color: #ffffff;
+	vertical-align: middle;
+  font-size: large;
+	color: black;
+}
+
+.calendar > .day {width:100%; display: table; table-layout: fixed;}
+.calendar > .day > div {display: table-cell; text-align: center; height: 50px; vertical-align: middle;}
+.calendar > .day > div:first-child {color: red;}
+.calendar > .day > div:last-of-type {color: blue;}
+.calendar > .dates {display: flex; flex-wrap: wrap; width: 100%;}
+.calendar > .dates > .date {text-align: left; width: calc(100%/7); height: 110px; box-sizing: border-box;line-height: 3; border-radius: 10px; padding: 10px; border: 1px solid #c6b2f55b;} 
+.calendar > .dates > .date:nth-child(7n){color: blue;}
+.calendar > .dates > .date:nth-child(7n+1){color: red;}
+.calendar > .dates > .last {color: #c8c8c8 !important;}
+.calendar > .dates > .next {color: #c8c8c8 !important;}
+
+.calendar,#accordionFlush{
+  float: left;
+}
+#scheduleTime {
+  font-size:14px;
+}
