@@ -3,68 +3,123 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-</head>
-<style>
-  html,body{
-    width:100%;
-    height: 100%;
-    margin : 0;
-    padding : 0;
-    border : none;	
-    overflow: auto;
-  }
-.calendar {width: 1200px;height: 900px; padding: 30px 0px 0px 50px; box-sizing: border-box; }
-.calendar > .header {text-align: center;font-size: 20px;margin: 15px;}
-.calendar > .header > .title {width:50%; display: inline-block;}
-.calendar > .header > .calendar_btn {
-	width: 30px;
-	height: 30px;
-	border: none;
-	padding: 0;
-	background-color: #ffffff;
-	vertical-align: middle;
-  font-size: large;
-	color: black;
-}
-.calendar > .day {width:100%; display: table; table-layout: fixed;}
-.calendar > .day > div {display: table-cell; text-align: center; height: 50px; vertical-align: middle;}
-.calendar > .day > div:first-child {color: red;}
-.calendar > .day > div:last-of-type {color: blue;}
-.calendar > .dates {display: flex; flex-wrap: wrap; width: 100%;}
-.calendar > .dates > .date {text-align: left; width: calc(100%/7); height: 90px; box-sizing: border-box;line-height: 3; border-radius: 10px; padding: 10px; border: 1px solid #c6b2f544;} 
-.calendar > .dates > .date:nth-child(7n){color: blue;}
-.calendar > .dates > .date:nth-child(7n+1){color: red;}
-.calendar > .dates > .last {color: #c8c8c8 !important;}
-.calendar > .dates > .next {color: #c8c8c8 !important;}
-
-.calendar,#contents{
-  float: left;
-}
-
-</style>
+    <title>HowToDo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="calnedar.css">
+  </head>
 <body>
-  <div class="calendar">
-    <div class="header">
-        <div class="year"></div>
-        <button class="calendar_btn">&lt;</button>
-        <div class = "title"> <span class="month"></span></div>
-        <button class="calendar_btn">&gt;</button>
+  <div class="row" >
+    <div class="col" id="calendar">
+      <div class="calendar">
+        <div class="header">
+            <div class="year" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></div>
+            <button class="calendar_btn"> <i class="bi bi-arrow-left-circle-fill"></i></button>
+            <div class = "title"> <span class="month" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></span></div>      
+            <button class="calendar_btn"> <i class="bi bi-arrow-right-circle-fill"></i></button>
+        </div>
+        <div class="day">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Web</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+        </div>
+        <div class="dates"></div>
+      </div>
+   </div>
+   <div class="col-3"  id="accordionFlush" style ="display: none;"  >
+      <div class="accordion accordion-flush" >
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" style="background-color: #a485ee44;" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne">
+            <div class="accordion-body">
+              <p><i class="bi bi-plus-square"></i></p>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
+                  <label class="form-check-label stretched-link" for="firstCheckboxStretched">First checkbox</label>
+                </li>
+                <li class="list-group-item">
+                  <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckboxStretched">
+                  <label class="form-check-label stretched-link" for="secondCheckboxStretched">Second checkbox</label>
+                </li>
+                <li class="list-group-item">
+                  <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckboxStretched">
+                  <label class="form-check-label stretched-link" for="thirdCheckboxStretched">Third checkbox</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" style="background-color: #a485ee44;" type="button"  data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Today's
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
+            <div class="accordion-body">
+                <div class="row">
+                  <!--하루 시간 테이블-->
+                  <div class="col-4">
+                    <div id="list-example" class="list-group">
+                      <a class="list-group-item list-group-item-action" id="scheduleTime" href="#list-item-1">09:00-18:00 </a>
+                      <a class="list-group-item list-group-item-action" id="scheduleTime" href="#list-item-2">18:00-19:30 </a>
+                      <a class="list-group-item list-group-item-action" id="scheduleTime" href="#list-item-3">19:30-20:00 </a>
+                    </div>
+                  </div>
+                  <!--시간 별 스케줄-->
+                  <div class="col-8">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">An item</li>
+                      <li class="list-group-item">A second item</li>
+                      <li class="list-group-item">A third item</li>
+
+                    </ul>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+</div>
+<!-- 년도, 월 클릭 시 event offcanvas -->
+<div class = "row" >
+  <div class = "col">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"  data-bs-backdrop="false" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p ></p>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckboxStretched">
+            <label class="form-check-label stretched-link" for="firstCheckboxStretched"></label>
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" id="secondCheckboxStretched">
+            <label class="form-check-label stretched-link" for="secondCheckboxStretched"></label>
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="" id="thirdCheckboxStretched">
+            <label class="form-check-label stretched-link" for="thirdCheckboxStretched"></label>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="day">
-        <div>Sun</div>
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Web</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div>Sat</div>
-    </div>
-    <div class="dates"></div>
-  </div>
-  <div class = "contents">
-        <h3 class = "memo"></h>
 
   </div>
+</div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>   
   <script type="text/javascript">
@@ -124,17 +179,19 @@
     //     }
  
     // }
-    const memo = document.querySelector(".memo");
+    const title = document.querySelector(".offcanvas-title");
     const year = document.querySelector('.year');
-    year.addEventListener('click', function fn_click(){
-        memo.textContent = year.innerHTML +  ' 올해 목표'; 
+    year.addEventListener('click', function (){
+      title.textContent = year.innerHTML +  ' 올해 년간 목표'; 
         
     });
 
     const month = document.querySelector('.month');  
-    month.addEventListener('click', function fn_click(){
-        memo.textContent = month.innerHTML + ' 목표';
+    month.addEventListener('click', function (){
+      title.textContent = month.innerHTML + '의 월간 목표';
     });
+
+    
  
     const prevMonth= document.querySelectorAll('.calendar_btn')[0];
     prevMonth.addEventListener('click',prevCal);
@@ -166,12 +223,18 @@
         $("#period_1").val(year+"-"+month+"-"+date);
         $("#period_2").val("");
         selectCk = date;
-        memo.textContent = month+ '월 ' + selectCk + '일 하루 스케줄러';
+        const accordionFlush = document.querySelector('#accordionFlush');
+        if(accordionFlush.style.display =='none'){
+          accordionFlush.style.display = 'block';
+        }else{
+          accordionFlush.style.display = 'none';
+        }
 
     }
 
     
     buildcalendar();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
