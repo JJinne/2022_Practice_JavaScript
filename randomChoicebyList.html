@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>randomChoice</title>
+</head>
+
+<style>
+    div{
+        float: left;
+    }
+    #list{
+        color: rgb(138, 137, 137);
+    }
+
+    
+</style>
+<body>
+    <div>
+         <div><p id="list"></p> <button id = "btn">선택</button></div>
+         <p id= "para"></p>
+    </div>
+    <script type="text/javascript">
+        const names = ['Chris','Mike','Anna','JJinTodo','Tina','Lee',"Tay"];
+        const para = document.getElementById('para');
+        
+        const list = document.querySelector("#list");
+        list.textContent = '후보 ' + names;
+        //랜덤 숫자 출력 함수
+        function random(min,max){
+            const num = Math.floor(Math.random()*(max - min))+min;
+            return num;
+        }
+        //names list에서 랜덤으로 이름 선택하는 함수
+        function chooseName(array){
+            const choice = array[random(0,array.length)];
+            return choice;
+        }
+       
+        // 버튼 클릭시 결과 출력
+        const btn = document.querySelector("#btn");
+        btn.addEventListener('click',resultChoice);
+        
+        function resultChoice(){         
+            para.textContent = '당첨자는' + chooseName(names) + '입니다.';
+            names.style.color = "#ffffff";
+        
+        }
+
+    </script>
+</body>
+</html>
