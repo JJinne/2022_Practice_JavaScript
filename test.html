@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>OOJS: Task 1</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    class Shape{
+        name;
+        sides;
+        sideLength;
+        //생성자
+        constructor(name,sides,sideLength){
+            this.name = name ; 
+            this.sides = sides;
+            this.sideLength = sideLength;
+
+        }
+        calcPerimeter(name,sides,sideLength){
+            alert(`The ${ this.name }'s perimeter length is ${ this.sides * this.sideLength }.`);
+        }
+    }
+    const square = new Shape('square',4,5);
+    square.calcPerimeter();
+    
+    class Square extends Shape{
+        constructor(sideLength){
+            super('square',4,sideLength);
+        }
+
+        calcArea(){
+            alert(`The ${ this.name }'s area is ${ this.sideLength * this.sideLength } squared.`); 
+        }
+    }
+    const square2 = new Square(4);
+    square2.calcArea();
+
+    function replacer (key,value){
+        if(typeof value == "string"){
+            return undefined;
+        }
+        return value;
+    }
+    var foo = {foundation: "Mozilla", model: "box", week: 45, transport: "car", month: 7};
+    var jsonString = JSON.stringify(foo, replacer);
+
+  </script>
+
+</html>

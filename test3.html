@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>객체지향 프로그래밍</title>
+    <style>
+      
+    </style>
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+    //  //5. 캡슐화(Encapsulation)와 모듈 패턴(Module Pattern)
+    //  var Person = function(){
+    //   var name;
+    //  }
+    //  var F = function(args){
+    //   name = arg?arg:''
+    //  };
+     
+    //  var person = function(arg) {
+    //   var name = arg ? arg : '';   // name 변수는 private 변수가 된다
+    //   return {
+    //     getName: function() {
+    //       return name;
+    //     },
+    //     setName: function(arg) {
+    //       name = arg;
+    //     }
+    //   }
+    // }
+    // var me = person('Lee');
+    
+    // console.log(person.prototype === me.__proto__); // false
+    // console.log(me.__proto__ === Object.prototype); // true
+
+    // // var me = person('Lee'); /* or var me = new person('Lee'); */
+
+    // // var name = me.getName();
+
+    // // console.log(name);
+
+    // // me.setName('Kim');
+    // // name = me.getName();
+
+    // // console.log(name);
+    // // //
+    // // var person = function(personInfo){
+    // //   var o = personInfo;
+      
+    // //   return{
+    // //     getPersonInfo:function(){
+    // //       return o;
+    // //     }
+    // //   };
+    // // };
+
+    // // var me = person({name:'Lee',gender:'male'});
+    // // var myInfo = me.getPersonInfo();
+    // // console.log('myInfo:',myInfo);
+
+    // myInfo.name = 'Kim';
+    // myInfo = me.getPersonInfo();
+    // console.log('myInfo:',myInfo);
+
+
+    //MDN 모듈패턴: private 함수와 변수에 접근하는 퍼블릭 함수를 정의하기 위해  클로저를 사용하는 방법을 보여준다.
+    var counter = (function(){
+      var privatCounter = 0;
+      function changeBy(val){
+        privatCounter +=val;
+      }
+      return{
+        increment: function(){
+          changeBy(1);
+        },
+        decrement: function(){
+          changeBy(-1);
+        },
+        value:function(){
+          return privatCounter;
+        }
+      };
+    })();
+    console.log(counter.value()); // logs 0
+    counter.increment();
+    counter.increment();
+    console.log(counter.value()); // logs 2
+    counter.decrement();
+    console.log(counter.value()); // logs 1
+
+  </script>
+
+</html>
