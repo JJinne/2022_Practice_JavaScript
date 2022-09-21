@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html len = "en-us">
+<head>
+    <meta charset="utf-8">
+    <title>클로저 </title>
+
+</head>
+<body>
+    <p>전역 변수를 사용한 Counting</p>
+    <button id = "increment">+</button>
+    <button id = "decrement">-</button>
+    <p id="counter"></p>
+    <script>
+        var incrementBtn = document.querySelector("#increment");
+        var decrementBtn = document.querySelector("#decrement");
+        var counterNum = document.querySelector("#counter")
+
+        var counter = (function(){
+            var privateCounter = 0;
+            return{
+                increment :function(){
+                   return ++privateCounter;
+                },
+                decrement:function(){
+                   return --privateCounter;
+                }
+            };
+        })();
+
+        incrementBtn.onclick = function(){
+            counterNum.innerHTML = counter.increment();
+        }
+        decrementBtn.onclick = function(){
+            counterNum.innerHTML = counter.decrement();
+        }
+    </script>
+</body>
+
+</html>
