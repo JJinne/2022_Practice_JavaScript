@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+
+    <title>클로저를 이용해서 프라이빗 메소드 (private method) 흉내내기</title>
+
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>ㄴ
+
+    <script>
+        var makeCounter = function(){
+            var privateCounter = 0; 
+            function changeBy(val){
+                privateCounter +=val;
+            }
+            return{
+                increase :function(){
+                    changeBy(1);
+                },
+                decrease: function(){
+                    changeBy(-1);
+
+                },
+                value : function(){
+                    return privateCounter;
+                }
+            }
+        };
+
+        var counter1 = new makeCounter();
+        var counter2 = new makeCounter();
+
+        alert(counter1.value()); // 0
+        counter1.increase();
+        counter1.increase();
+        alert(counter1.value()); //2
+        counter2.increase();
+        counter2.increase();
+        counter2.increase();
+        counter2.increase();
+        alert(counter1.value()); //2
+        alert(counter2.value()); //4
+        //두개의 카운터(counter1, counter2)가 독립성을 유지
+
+
+    </script>
+  </body>
+</html>
