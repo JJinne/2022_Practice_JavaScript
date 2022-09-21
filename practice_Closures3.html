@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html len = "en-us">
+<head>
+    <meta charset="utf-8">
+    <title>클로저 내부함수 개념</title>
+
+</head>
+<body>
+
+    <script>
+      // function init(){
+      //   var name = "Mozilla";  //지역변수
+      //   function displayName(){ //내부함수 = 클로저
+      //     alert(name);  
+      //   }
+      //   return displayName();
+      // }
+      // var myFunc = init();
+      // myFunc();
+
+      function makeAdder(x){
+        var y =1;
+        return function(z){
+          y= 100;
+          return x + y + z;
+        };
+      }
+      var add5 = makeAdder(5); 
+      var add10 = makeAdder(10);
+
+      console.log(add5(2)); //(x:5 y:100 z:2)
+      console.log(add10(2)); //(x:10 y:100 z:2)
+
+      //add5, add10 은 둘다 클로저이다. 같은 함수 본문 정의를 공유하지만 서로 다른 맥락적 환경을 저장
+      //리턴되는 함수에서 y는 초기값이 1 로 할당된 y에 접근하여 y 값을 100으로 변경
+ </script>
+</body>
+
+</html>
