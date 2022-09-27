@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html len = "en-us">
+<head>
+    <meta charset="utf-8">
+    <title>루프에서 클로저 생성하기: 일반적인 실수</title>
+
+</head>
+<body>
+
+    <p id="help">Helpful notes will appear here</p>
+    <p>E-mail: <input type="text" id="email" name="email"></p>
+    <p>Name: <input type="text" id="name" name="name"></p>
+    <p>Age: <input type="text" id="age" name="age"></p>
+
+    <script>
+    function showHelp(help) {
+      document.getElementById('help').innerHTML = help;
+    }
+
+    // function makeHelpCallback (help){
+    //     return function(){
+    //         showHelp(help);
+    //     };
+    // }
+    function setupHelp() {
+      var helpText = [
+          {'id': 'email', 'help': 'Your e-mail address'},
+          {'id': 'name', 'help': 'Your full name'},
+          {'id': 'age', 'help': 'Your age (you must be over 16)'}
+        ];
+
+      for (var i = 0; i < helpText.length; i++) {
+        // var item = helpText[i];
+        // document.getElementById(item.id).onfocus =  makeHelpCallback(item.help);
+        // var 대신 let을 사용하여 모든 클로저가 블록 범위 변수를 바인딩할 것이므로 추가적인 클로저를 사용하지 않아도 완벽하게 동작할 것이다.
+        let item = helpText[i];
+        document.getElementById(item.id).onfocus = function(){
+            showHelp(item.help);
+        }
+      }
+    }
+    setupHelp();
+    </script>
+</body>
+
+</html>

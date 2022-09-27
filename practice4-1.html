@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html len = "en-us">
+    <head>
+        <title>클로저 - 프로토타입</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            function MyObject(name, message){
+                this.name = name;
+                this.message = message;
+
+            }
+            // MyObject.prototype.getName = function(){
+            //     return this.name;
+            // }
+            (function(){
+                this.getName = function(){
+                    return this.name;
+                };
+                this.getMessage = function(){
+                    return this.message;
+                };
+            }).call(MyObject.prototype);
+
+
+        </script>        
+    </body>
+</html>
